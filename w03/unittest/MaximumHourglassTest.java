@@ -7,13 +7,18 @@ import org.junit.Test;
 import maximumhourglass.Main;
 
 /**
- *
+ * Provides JUnitTests to check the validity of the maxHourglass method.
  *
  * @author Ativelox {@literal <ativelox.dev@web.de>}
+ * 
+ * @see Main#maxHourglass(int[][])
  *
  */
 public class MaximumHourglassTest {
 
+	/**
+	 * Checks the method {@link Main#maxHourglass(int[][])}}.
+	 */
 	@SuppressWarnings("static-method")
 	@Test
 	public void testMaxHourglass() {

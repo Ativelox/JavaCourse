@@ -7,13 +7,17 @@ import org.junit.Test;
 import secondhighest.Main;
 
 /**
- *
+ * Provides JUnitTests to check the validity of the secondHighest method.
  *
  * @author Ativelox {@literal <ativelox.dev@web.de>}
  *
+ * @see Main#secondHighest(int[])
  */
 public class SecondHighestTest {
 
+	/**
+	 * Checks the validity of {@link Main#secondHighest(int[])}
+	 */
 	@SuppressWarnings("static-method")
 	@Test
 	public void secondHighestTest() {

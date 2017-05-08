@@ -7,13 +7,20 @@ import org.junit.Test;
 import caesarcipher.Main;
 
 /**
- *
+ * Provides JUnitTests to check the encoding of the caesar cipher.
  *
  * @author Ativelox {@literal <ativelox.dev@web.de>}
+ * 
+ * @see Main#encode(String, int)
  *
  */
 public class CaesarCipherTest {
 
+	/**
+	 * Testing encoding method for the caesar cipher.
+	 * 
+	 * @see Main#encode(String, int)
+	 */
 	@SuppressWarnings("static-method")
 	@Test
 	public void testEncode() {
