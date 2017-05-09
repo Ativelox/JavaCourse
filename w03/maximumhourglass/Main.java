@@ -74,11 +74,11 @@ public class Main {
 
 				// calculate the sum of the hourglass pattern.
 				tempSum += mMatrix[x][y];
-				tempSum += mMatrix[x + 1][y];
-				tempSum += mMatrix[x + 2][y];
-				tempSum += mMatrix[x + 1][y + 1];
+				tempSum += mMatrix[x][y + 1];
 				tempSum += mMatrix[x][y + 2];
-				tempSum += mMatrix[x + 1][y + 2];
+				tempSum += mMatrix[x + 1][y + 1];
+				tempSum += mMatrix[x + 2][y];
+				tempSum += mMatrix[x + 2][y + 1];
 				tempSum += mMatrix[x + 2][y + 2];
 
 				// if the current iterations hourglass sum is greater than the

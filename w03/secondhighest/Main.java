@@ -23,22 +23,17 @@ public class Main {
 	 */
 	public static int secondHighest(final int[] mNumbers) {
 
-		// if the array is empty, return the minimum value an integer can hold,
+		// if the array is empty or only has one element, return the minimum value an integer can hold,
 		// as expected.
-		if (mNumbers.length <= 0) {
+		if (mNumbers.length <= 1) {
 			return Integer.MIN_VALUE;
 		}
 
-		// return the number itself it the array only contains one element.
-		if (mNumbers.length == 1) {
-			return mNumbers[0];
-		}
-
 		// holds the greatest number up to the iteration it is at.
-		int greatestNumber = 0;
+		int greatestNumber = Integer.MIN_VALUE;
 
 		// holds the second greatest number up to the iteration is is at.
-		int secondGreatestNumber = 0;
+		int secondGreatestNumber = Integer.MIN_VALUE;
 
 		// iterates over the array and sets the greatest and second greatest
 		// numbers accordingly

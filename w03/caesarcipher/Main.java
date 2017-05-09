@@ -63,10 +63,19 @@ public class Main {
 
 			// now shift the char by the given shift
 			char shiftedChar = (char) (c + mShift);
+			
+			// if the shifted char is way above what can be displayed remove	
+			// the length of the alphabet step by step until it can get handled
+			// by the following overflow expression
+			while((shiftedChar - (end - start + 1)) > end){
+				shiftedChar -= (end - start + 1);
+
+			}
 
 			// if there's an overflow adjust the the char so it starts back from
 			// the start of the interval accordingly.
-			if (shiftedChar >= end) {
+			if (shiftedChar >= end) {		
+				
 				shiftedChar = (char) ((shiftedChar % end) + (start - 1));
 			}
 
