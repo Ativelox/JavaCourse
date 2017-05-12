@@ -35,11 +35,13 @@ public class CaesarCipherTest {
 		Assert.assertEquals("+\\&%/264", Main.encode("+\\&%/264", 24));
 
 		Assert.assertEquals("abcDEFGhij", Main.encode("abcDEFGhij", 26));
-		
+
 		Assert.assertEquals("bcdEFGHijk", Main.encode("abcDEFGhij", 27));
-		
+
 		Assert.assertEquals("abcDEFGhij", Main.encode("abcDEFGhij", 52));
-		
+
 		Assert.assertEquals("ajynulp", Main.encode("encrypt", 256));
+
+		Assert.assertEquals("Ranoq?d q?z, 35-iey?-Xeppa", Main.encode("Versu?h u?d, 35-mic?-Bitte", 22));
 	}
 }

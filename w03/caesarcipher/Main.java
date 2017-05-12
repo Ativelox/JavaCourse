@@ -74,9 +74,9 @@ public class Main {
 
 			// if there's an overflow adjust the the char so it starts back from
 			// the start of the interval accordingly.
-			if (shiftedChar >= end) {		
-				
+			if (shiftedChar > end) {		
 				shiftedChar = (char) ((shiftedChar % end) + (start - 1));
+				
 			}
 
 			// finally append the shifted char to the final string.

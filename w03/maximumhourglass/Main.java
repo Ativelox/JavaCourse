@@ -59,7 +59,7 @@ public class Main {
 		final int height_iterations = MATRIX_SIZE - HOURGLASS_HEIGHT + 1;
 
 		// holds per iteration the highest sum yet calculated.
-		int resultSum = 0;
+		int resultSum = Integer.MIN_VALUE;
 
 		// start shifting the hourglass pattern per iteration by 1 position to
 		// the right, starting at a xshift of 0.

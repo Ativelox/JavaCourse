@@ -1,6 +1,8 @@
 package linenumbers;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Reads from the systems input stream and prints the result to the systems
@@ -19,7 +21,7 @@ public class Main {
 	 * @param args
 	 *            The command-line arguments
 	 */
-	public static void main(final String[] args) {
+	public static void main(String[] args) {
 
 		// try resource for efficiency
 		try (final Scanner scan = new Scanner(System.in)) {
@@ -46,20 +48,10 @@ public class Main {
 					System.out.println("Bad arguments." + System.lineSeparator()
 							+ "Usage: line-numbers [start-number [end-number]]");
 
-					System.exit(0);
+					return;
 
 				}
 			}
-
-			// ask the user how many rows to read so the scanner can stop
-			// reading input after the given number of rows.
-			System.out.println("How many rows to read?");
-
-			// the number of rows to read
-			final int numberOfRows = scan.nextInt();
-
-			// set the cursor of the buffer to the start of the next line.
-			scan.nextLine();
 
 			// the string builder used to create the string needed. Way more
 			// efficient for big inputs.
@@ -67,11 +59,11 @@ public class Main {
 
 			int i = 0;
 
-			// iterate over every row and add the row number to the left hand
-			// side of each row.
-			for (i = 0; i < numberOfRows; i++) {
+			// iterate over all the scanner inputs and add it to a string. get
+			// out of loop by sending an EOF token
+			while (scan.hasNextLine()) {
 				builder.append((i + 1) + " " + scan.nextLine() + System.lineSeparator());
-
+				i++;
 			}
 
 			// if m didn't get assigned through the command line arguments set
@@ -94,14 +86,32 @@ public class Main {
 			// re-initialize the builder so it can be used again.
 			builder = new StringBuilder();
 
+			// the regex pattern used to identify correct row-patterns.
+			Pattern pattern = Pattern.compile("^(\\d+)\\s.*$");
+
 			// iterate over the rows and append the appropriate rows to the new
 			// builder object.
 			for (String row : tempResult.split(System.lineSeparator())) {
-				if (Character.getNumericValue(row.charAt(0)) >= n && Character.getNumericValue(row.charAt(0)) <= m) {
-					builder.append(row + System.lineSeparator());
+
+				// the matcher object trying to match the given regex pattern
+				// onto the current row.
+				Matcher matcher = pattern.matcher(row);
+
+				// if the regex doesn't apply to the row, continue with the next
+				// iteration
+				if (!matcher.matches()) {
+					continue;
 
 				}
 
+				// holds the value of the row number of the current row.
+				final int rowNumber = Integer.parseInt(matcher.group(1));
+
+				// make sure to only display rows which are in the given bounds.
+				if (rowNumber >= n && rowNumber <= m) {
+					builder.append(row + System.lineSeparator());
+
+				}
 			}
 			// finally print the new built string.
 			System.out.println(builder.toString());
