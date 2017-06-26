@@ -1,6 +1,8 @@
-package blockworld;
+package blockworld_revised;
 
 import java.util.List;
+
+import blockworld.Block;
 
 /**
  * A BlockWorld which holds blocks in its world. BlockWorlds are alive as long
@@ -145,7 +147,7 @@ public class BlockWorld {
 	 * @return Whether the world is dead or not.
 	 */
 	public boolean isDead() {
-		for (final Block block : this.blocks) {
+		for (final Block block : this.blocks) {	
 			// if theres one block which is not dead, make sure to return false
 			// since one block not being dead results in the world to not be
 			// dead.

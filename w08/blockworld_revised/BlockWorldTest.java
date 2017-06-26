@@ -1,4 +1,4 @@
-package blockworld;
+package blockworld_revised;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -7,6 +7,9 @@ import java.util.List;
 import org.junit.Assert;
 
 import org.junit.Test;
+
+import blockworld.Block;
+import blockworld.BlockWorld;
 
 /**
  *
@@ -17,9 +20,9 @@ import org.junit.Test;
 public class BlockWorldTest {
 
 	/**
-	 * Test method for {@link blockworld_revised.BlockWorld#isDead()},
-	 * {@link blockworld_revised.BlockWorld#step()},
-	 * {@link blockworld_revised.BlockWorld#observe()}.
+	 * Test method for {@link blockworld.BlockWorld#isDead()},
+	 * {@link blockworld.BlockWorld#step()},
+	 * {@link blockworld.BlockWorld#observe()}.
 	 */
 	@SuppressWarnings("static-method")
 	@Test
@@ -45,7 +48,7 @@ public class BlockWorldTest {
 	}
 
 	/**
-	 * Test method for {@link blockworld_revised.BlockWorld#getWidth()}.
+	 * Test method for {@link blockworld.BlockWorld#getWidth()}.
 	 */
 	@SuppressWarnings("static-method")
 	@Test
@@ -58,7 +61,7 @@ public class BlockWorldTest {
 	}
 
 	/**
-	 * Test method for {@link blockworld_revised.BlockWorld#getHeight()}.
+	 * Test method for {@link blockworld.BlockWorld#getHeight()}.
 	 */
 	@SuppressWarnings("static-method")
 	@Test

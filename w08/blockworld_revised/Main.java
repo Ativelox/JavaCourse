@@ -1,4 +1,4 @@
-package blockworld;
+package blockworld_revised;
 
 import java.awt.Container;
 import java.awt.Font;
@@ -8,6 +8,9 @@ import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.WindowConstants;
+
+import blockworld.Block;
+import blockworld.BlockWorld;
 
 /**
  * A GUI-Client which visualizes the logic implemented in {@link BlockWorld}.
@@ -20,7 +23,7 @@ public class Main {
 	public static void main(String[] args) throws InterruptedException {
 		BlockWorld w = new BlockWorld(10, 20, Arrays.asList(new Block(2, 0, 2, 'x'), new Block(0, 0, 0, 'o')), '.');
 		runBlockWorld(w);
-	}
+		}
 
 	/**
 	 * Create the GUI and show it. For thread safety, this method should be
