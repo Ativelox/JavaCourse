@@ -18,7 +18,7 @@ import javax.swing.WindowConstants;
 public class Main {
 
 	public static void main(String[] args) throws InterruptedException {
-		BlockWorld w = new BlockWorld(10, 20, Arrays.asList(new Block(2, 0, 2, 'x'), new Block(0, 0, 0, 'o')), '.');
+		BlockWorld w = new BlockWorld(10, 20, Arrays.asList(new Block(0, 0, 1, 'x'), new Block(2, 2, 2, 'o')), '.');
 		runBlockWorld(w);
 	}
 

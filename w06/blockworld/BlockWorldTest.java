@@ -1,11 +1,11 @@
 package blockworld;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Assert;
-
 import org.junit.Test;
 
 /**
@@ -41,7 +41,17 @@ public class BlockWorldTest {
 		w2.step();
 		w2.step();
 		Assert.assertTrue(w2.isDead());
-
+		
+		final List<Block> blocks = Arrays.asList(new Block(0, 0, 1, 'x'), new Block(1, 0, 1, 'o'));
+		
+		final BlockWorld w1 = new BlockWorld(2, 3, blocks, '.');
+		w1.step();
+		w1.step();
+		w1.step();
+		
+		final BlockWorld w3 = new BlockWorld(2, 3, blocks, '.');
+		Assert.assertEquals('x', w3.observe()[0][0]);
+		
 	}
 
 	/**

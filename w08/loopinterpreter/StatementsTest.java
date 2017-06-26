@@ -26,7 +26,7 @@ public class StatementsTest {
 		state.put("X", Integer.valueOf(42));
 
 		final Statement stmt = Statements.assign("Y",
-				Statements.binop(Statements.var("X"), Binary.ADD, Statements.constant(1)));
+				Expressions.binop(Expressions.var("X"), Binary.ADD, Expressions.constant(1)));
 
 		stmt.run(state);
 		Assert.assertEquals(Integer.valueOf(42), state.get("X"));
@@ -49,8 +49,8 @@ public class StatementsTest {
 		state.put("X", Integer.valueOf(42));
 
 		final Statement stmt = Statements.seq(
-				Statements.assign("Y", Statements.binop(Statements.var("X"), Binary.ADD, Statements.constant(1))),
-				Statements.assign("X", Statements.var("Y")));
+				Statements.assign("Y", Expressions.binop(Expressions.var("X"), Binary.ADD, Expressions.constant(1))),
+				Statements.assign("X", Expressions.var("Y")));
 
 		stmt.run(state);
 		Assert.assertEquals(Integer.valueOf(43), state.get("X"));
@@ -71,9 +71,9 @@ public class StatementsTest {
 		final State state = new State();
 		state.put("X", Integer.valueOf(42));
 
-		final Statement stmt = Statements.cond(Statements.var("X"),
-				Statements.assign("X", Statements.binop(Statements.var("X"), Binary.ADD, Statements.constant(1))),
-				Statements.assign("X", Statements.var("X")));
+		final Statement stmt = Statements.cond(Expressions.var("X"),
+				Statements.assign("X", Expressions.binop(Expressions.var("X"), Binary.ADD, Expressions.constant(1))),
+				Statements.assign("X", Expressions.var("X")));
 
 		stmt.run(state);
 		Assert.assertEquals(Integer.valueOf(43), state.get("X"));
@@ -81,11 +81,13 @@ public class StatementsTest {
 		final State state2 = new State();
 		state2.put("X", Integer.valueOf(42));
 
-		Assert.assertEquals(0, Statements.binop(Statements.var("X"), Binary.SUB, Statements.var("X")).eval(state2));
+		Assert.assertEquals(0, Expressions.binop(Expressions.var("X"), Binary.SUB, Expressions.var("X")).eval(state2));
 
-		final Statement stmt2 = Statements.cond(Statements.binop(Statements.var("X"), Binary.SUB, Statements.var("X")),
-				Statements.assign("X", Statements.binop(Statements.var("X"), Binary.ADD, Statements.constant(1))),
-				Statements.assign("X", Statements.var("X")));
+		final Statement stmt2 = Statements
+				.cond(Expressions.binop(Expressions.var("X"), Binary.SUB, Expressions.var("X")),
+						Statements.assign("X",
+								Expressions.binop(Expressions.var("X"), Binary.ADD, Expressions.constant(1))),
+						Statements.assign("X", Expressions.var("X")));
 
 		stmt2.run(state2);
 		Assert.assertEquals(Integer.valueOf(42), state2.get("X"));
@@ -107,9 +109,9 @@ public class StatementsTest {
 		state.put("X", Integer.valueOf(42));
 		state.put("Y", Integer.valueOf(0));
 
-		final Statement stmt = Statements.loop(Statements.var("X"), Statements.seq(
-				Statements.assign("X", Statements.binop(Statements.var("X"), Binary.SUB, Statements.constant(1))),
-				Statements.assign("Y", Statements.binop(Statements.var("Y"), Binary.ADD, Statements.constant(2)))));
+		final Statement stmt = Statements.loop(Expressions.var("X"), Statements.seq(
+				Statements.assign("X", Expressions.binop(Expressions.var("X"), Binary.SUB, Expressions.constant(1))),
+				Statements.assign("Y", Expressions.binop(Expressions.var("Y"), Binary.ADD, Expressions.constant(2)))));
 
 		stmt.run(state);
 		Assert.assertEquals(Integer.valueOf(0), state.get("X"));

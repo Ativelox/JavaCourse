@@ -8,7 +8,7 @@ package blockworld;
  * @author Ativelox {@literal <ativelox.dev@web.de>}
  *
  */
-public class Block {
+public class Block implements Cloneable{
 
 	/**
 	 * The x coordinate of this block.
@@ -108,5 +108,11 @@ public class Block {
 		}
 		this.y += this.velocity;
 
+	}
+	
+	@Override
+	public Block clone(){
+		return new Block(this.x, this.y, this.velocity, this.shape);
+		
 	}
 }

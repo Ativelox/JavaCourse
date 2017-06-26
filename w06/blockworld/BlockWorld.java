@@ -1,5 +1,6 @@
 package blockworld;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -57,9 +58,13 @@ public class BlockWorld {
 		}
 		this.width = mWidth;
 		this.height = mHeight;
-		this.blocks = mBlocks;
 		this.empty = mEmpty;
+		this.blocks = new LinkedList<>();
 
+		for (final Block block : mBlocks) {
+			this.blocks.add(block.clone());
+
+		}
 	}
 
 	/**

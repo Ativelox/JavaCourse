@@ -24,7 +24,7 @@ public final class SortedBinaryTree implements Tree {
 	 * Constructs a new sorted binary tree where the root has the value 0.
 	 */
 	public SortedBinaryTree() {
-		this(0);
+		this(null, 0);
 
 	}
 
@@ -56,7 +56,7 @@ public final class SortedBinaryTree implements Tree {
 	 * 
 	 * @param mEntry
 	 *            The root of this tree.
-	 *            
+	 * 
 	 * @param mSize
 	 *            The size of this tree.
 	 */
@@ -73,6 +73,11 @@ public final class SortedBinaryTree implements Tree {
 	 */
 	@Override
 	public Tree add(int mI) {
+		if (this.root == null) {
+			return new SortedBinaryTree(new SortedTreeEntry(mI, null, null), this.size + 1);
+
+		}
+
 		if (!this.contains(mI)) {
 			return new SortedBinaryTree(this.root.add(mI), this.size + 1);
 
@@ -88,6 +93,11 @@ public final class SortedBinaryTree implements Tree {
 	 */
 	@Override
 	public boolean contains(int mI) {
+		if (this.root == null) {
+			return false;
+
+		}
+
 		return this.root.contains(mI);
 
 	}
@@ -99,6 +109,11 @@ public final class SortedBinaryTree implements Tree {
 	 */
 	@Override
 	public String elementsAsString() {
+		if (this.root == null) {
+			return "";
+
+		}
+
 		return this.root.toInOrder();
 
 	}

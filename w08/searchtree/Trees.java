@@ -17,6 +17,11 @@ public final class Trees {
 	 * @return The tree with the given elements.
 	 */
 	public static Tree makeTree(final int[] mElements) {
+		if(mElements.length <= 0){
+			return new SortedBinaryTree();
+			
+		}
+		
 		Tree currentTree = new SortedBinaryTree(mElements[0]);
 
 		for (int i = 1; i < mElements.length; i++) {

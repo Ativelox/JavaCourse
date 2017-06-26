@@ -54,10 +54,10 @@ public class SortedBinaryTreeTest {
 		final Tree tree = Trees.makeTree(new int[] { 2, 3, 4, 4, 1 });
 
 		Assert.assertEquals(4, tree.size());
-
 		Assert.assertEquals(5, tree.add(6).size());
-
 		Assert.assertEquals(1, Trees.makeTree(new int[] { 0 }).size());
+
+		Assert.assertEquals(0, Trees.makeTree(new int[] {}).size());
 	}
 
 	/**
